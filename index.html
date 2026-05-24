@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienwito Karnthanat — AI Automation Specialist</title>
+<meta name="description" content="Process automation & AI specialist in enterprise logistics. Document AI extraction, RPA, Power Platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Newsreader:ital,opsz@0,6..72;1,6..72&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     HOW TO EDIT THIS SITE
+     ────────────────────────────────────────────────────────────────────
+     Everything you'll want to change lives in the SITE_DATA block just
+     below (inside <script id="data">). You do NOT need to touch the HTML
+     or CSS. Edit the text between the quotes, save, refresh.
+
+     • profile  → your name, tagline, contact links
+     • about    → the two intro paragraphs + your toolkit list
+     • cases    → each project card. Copy a whole { ... } block to add one.
+                  Set  "flag": ""  for no badge, or "Flagship" / "Personal".
+                  metrics: up to 3 per case. Leave [] for none.
+     • To REORDER cases, just move the { ... } blocks up or down.
+     • To HIDE a case, add  "hidden": true  to its block.
+     ════════════════════════════════════════════════════════════════════ -->
+
+<style>
+:root{
+  /* —— EDIT COLORS HERE if you want a different palette —— */
+  --bg:#16181d;          /* page background        */
+  --bg-2:#1c1f26;        /* card / panel background*/
+  --ink:#ece7df;         /* main text              */
+  --ink-soft:#a8a39a;    /* secondary text         */
+  --ink-faint:#6f6b63;   /* labels / captions      */
+  --accent:#9bb08a;      /* highlight (sage green)  — change this for a new vibe */
+  --accent-2:#d8a657;    /* badge color (amber)    */
+  --line:#2c2f37;        /* borders / dividers     */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Newsreader',serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+header{padding:90px 0 60px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,6.5vw,82px);line-height:1.03;letter-spacing:-.02em;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(19px,2.4vw,24px);color:var(--ink-soft);max-width:660px;line-height:1.5}
+.lede strong{color:var(--ink);font-weight:400}
+.contact-row{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px 28px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.contact-row a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:.25s}
+.contact-row a:hover{color:var(--accent);border-color:var(--accent)}
+
+.section{padding:80px 0;border-bottom:1px solid var(--line)}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+.sec-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,42px);letter-spacing:-.01em;margin-bottom:18px}
+
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+.about-grid p{margin-bottom:18px;color:var(--ink-soft)}
+.about-grid p strong{color:var(--ink);font-weight:400}
+.stack-box{border:1px solid var(--line);background:var(--bg-2);padding:28px;border-radius:3px;align-self:start}
+.stack-box h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:500}
+.stack-box ul{list-style:none}
+.stack-box li{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-soft);padding:7px 0;border-bottom:1px dotted var(--line)}
+.stack-box li:last-child{border:none}
+
+.case{padding:56px 0;border-bottom:1px solid var(--line)}
+.case:last-child{border-bottom:none}
+.case-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint);letter-spacing:.2em}
+.case-flag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--accent-2);padding:4px 10px;border-radius:2px;margin-left:14px;vertical-align:middle;font-weight:500}
+.case h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(25px,3.4vw,36px);letter-spacing:-.01em;margin:14px 0 8px;line-height:1.12}
+.case-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.05em;margin-bottom:28px}
+.case-body{display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;margin-bottom:32px}
+.case-body .block h5{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+.case-body .block p{color:var(--ink-soft);font-size:16.5px;line-height:1.5}
+.metrics{display:flex;flex-wrap:wrap;gap:36px;padding:26px 0;border-top:1px solid var(--line)}
+.metric{min-width:110px}
+.metric .val{font-family:'Fraunces',serif;font-size:clamp(32px,4.6vw,46px);font-weight:500;line-height:1;color:var(--accent);letter-spacing:-.02em}
+.metric .val small{font-size:.5em;color:var(--ink-soft)}
+.metric .cap{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px}
+.stack-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.stack-tags span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);border:1px solid var(--line);padding:5px 11px;border-radius:2px}
+
+footer{padding:80px 0 100px;text-align:center}
+footer .big{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(28px,5vw,46px);font-weight:400;color:var(--ink);margin-bottom:32px;letter-spacing:-.01em}
+.foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px 26px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.foot-links a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:.25s}
+.foot-links a:hover{border-color:var(--accent)}
+.disclaimer{margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);line-height:1.7;max-width:580px;margin:48px auto 0}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .case-body{grid-template-columns:1fr;gap:18px}
+  .wrap{padding:0 22px}
+  header{padding:60px 0 44px}.section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  ▼▼▼  EDIT YOUR CONTENT HERE  ▼▼▼                                 ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<script id="data" type="application/json">
+{
+  "profile": {
+    "eyebrow": "AI Automation Specialist · Process Improvement",
+    "headline_line1": "I turn manual",
+    "headline_line2": "operations into",
+    "headline_em": "measured automation.",
+    "lede": "I'm <strong>Tienwito Karnthanat</strong> — a process-automation specialist in enterprise logistics. I measure where work actually goes, then rebuild it with document AI, RPA and the Power Platform so teams stop drowning in repetitive tasks.",
+    "email": "contact@tienwito.com",
+    "linkedin_url": "https://www.linkedin.com/in/tienwito-karnthanat/",
+    "github_url": "https://github.com/tienwito",
+    "location": "Bangkok, Thailand"
+  },
+
+  "about": {
+    "title": "Evidence first, then engineering.",
+    "paragraphs": [
+      "Most automation fails because nobody measured the problem. I start with <strong>time-and-motion analysis</strong> — breaking a workflow into tasks, attaching real handling times and volumes, and converting it into FTE workload. Only then do I automate the steps where the numbers prove it pays off.",
+      "I work inside large, compliance-heavy organisations where data is sensitive and change is slow. My job is to make automation <strong>defensible to management and safe for operations</strong> — quantified savings, low-risk pilots, and reusable tools the team can run without me.",
+      "I specialise in <strong>document-heavy workflows</strong> — invoices, customs declarations, certificates — where AI extraction meets real compliance stakes. Generic models aren't enough there; domain knowledge is the difference between a demo and production."
+    ],
+    "toolkit": [
+      "Power Automate / Power Platform",
+      "Azure AI Document Intelligence",
+      "RPA · Power Automate Desktop",
+      "Claude API · LLM workflow design",
+      "Office Scripts · Advanced Excel / VBA",
+      "Power Query (M)",
+      "Python automation scripting",
+      "Power BI · DAX",
+      "Process mapping · FTE modelling"
+    ]
+  },
+
+  "cases": [
+    {
+      "flag": "Flagship",
+      "title": "Automated extraction of supplier invoices into customs declarations",
+      "tag": "RPA · Document AI · Customs Compliance",
+      "problem": "A customs operations team manually re-keyed data from supplier invoices and packing lists — arriving as PDFs in dozens of different layouts — into a customs declaration template. Every shipment, by hand. High volume, high error cost: a mistake can cost a client their tariff privileges or hold a shipment at customs.",
+      "approach": "Designed an end-to-end pipeline: documents received by email → fields extracted with Azure Document Intelligence → invoice and packing data joined and validated → written into the customs Excel template by exact column position. The extraction layer is kept separate from the business logic, so accuracy and rules can be improved independently. Exceptions are flagged for review instead of failing silently.",
+      "result": "Removed the bulk of manual keying on a high-stakes, high-volume document flow and cut a major source of declaration errors — turning a repetitive specialist task into a reviewed, automated one.",
+      "role": "Owned it end to end — process analysis, extraction model setup, the join-and-write Office Script logic, and the exception handling that made it trustworthy enough for production.",
+      "metrics": [
+        {"val": "~80<small>%</small>", "cap": "Manual keying removed"},
+        {"val": "Many<small> formats</small>", "cap": "Supplier layouts handled"},
+        {"val": "High", "cap": "Compliance stakes"}
+      ],
+      "stack": ["Power Automate", "Azure Document Intelligence", "Office Scripts", "Excel"]
+    },
+    {
+      "flag": "",
+      "title": "Workload & FTE study that proved a team was under-resourced",
+      "tag": "Time-and-Motion · FTE Modelling · Operational Analysis",
+      "problem": "A customs brokerage team felt permanently overloaded, but leadership had no quantified evidence — only overtime and complaints. Was it too much work, or slow work? Nobody could say.",
+      "approach": "Ran a full time-and-motion study across every process line (declarations, certificates of origin, permits, privileges). Captured handling time per task, applied real monthly volumes across 2,400+ customer accounts and 20,000+ declarations/month, and rolled it into an FTE workload model — exposing which tasks scaled badly with line-item count.",
+      "result": "Showed the workload required 30+ FTE while overtime alone ran at 12,000+ hours/year — the equivalent of 6–7 missing full-time staff. The 'we're slow' narrative became a measured 'we're structurally short-staffed,' and pinpointed exactly which tasks to automate first.",
+      "role": "Designed the data-collection framework, built the FTE model, and translated raw timings into a one-page evidence base management could act on.",
+      "metrics": [
+        {"val": "30<small>+ FTE</small>", "cap": "Quantified workload"},
+        {"val": "12k<small> hrs</small>", "cap": "Annual overtime exposed"},
+        {"val": "2,400<small>+</small>", "cap": "Accounts modelled"}
+      ],
+      "stack": ["Time-and-Motion Study", "FTE Modelling", "Advanced Excel", "Process Mapping"]
+    },
+    {
+      "flag": "",
+      "title": "FTA rules-of-origin data cleaner for customs compliance",
+      "tag": "OCR Cleanup · Data Engineering · Reusable Tooling",
+      "problem": "Free-trade-agreement annexes (product-specific rules) come as long OCR'd tables full of split rows and truncated headings. Used as master data for customs work, a single error means a client loses a trade benefit — so 100% accuracy was the bar.",
+      "approach": "Built a repeatable cleaning pipeline: merged ~1,960 continuation rows, repaired ~1,290 truncated sub-headings, and produced a clean master-data sheet plus an automated QC report and a Thai-language human-review checklist for specialist sign-off. Packaged the whole thing as a reusable tool so future annexes take minutes, not days.",
+      "result": "Turned an error-prone manual cleanup into a reliable, auditable process with a human checkpoint — and made it reusable across future agreements instead of a one-off.",
+      "role": "Designed and built the pipeline, the QC logic, and the review checklist; packaged it for the team to reuse.",
+      "metrics": [
+        {"val": "~3,250", "cap": "Rows repaired / merged"},
+        {"val": "100<small>%</small>", "cap": "Accuracy target"},
+        {"val": "Reusable", "cap": "Packaged as a tool"}
+      ],
+      "stack": ["Python", "Power Query", "Excel", "OCR post-processing"]
+    },
+    {
+      "flag": "",
+      "title": "Cross-system billing automation for a global e-commerce account",
+      "tag": "Web Automation · API Integration · Process Re-engineering",
+      "problem": "A billing process for a major e-commerce client spanned three disconnected systems — cost input, debit-note creation, and a web platform entry — all bridged manually, slowly, with re-entry errors at each handoff.",
+      "approach": "Mapped the full three-phase flow, prototyped through several architectures, and solved the cross-origin barrier between systems with a lightweight proxy so data could move automatically across the boundary that had forced manual work.",
+      "result": "Connected steps that were previously stitched by hand, cutting re-keying and the errors it caused — and documented the flow so the team owned it afterwards.",
+      "role": "Process analysis, prototyping across approaches, and the integration work that made three systems behave like one.",
+      "metrics": [
+        {"val": "3<small> systems</small>", "cap": "Bridged into one flow"},
+        {"val": "↓", "cap": "Manual re-entry & errors"}
+      ],
+      "stack": ["Web Automation", "Proxy / CORS", "Process Mapping", "Documentation"]
+    },
+    {
+      "flag": "",
+      "title": "Email-to-Excel alert pipeline with reusable AI building blocks",
+      "tag": "Power Automate · Claude API · Internal Tooling",
+      "problem": "Operational alert emails from an external system needed to be captured, parsed, and logged into a shared tracker reliably — including historical backfill — without anyone watching the inbox.",
+      "approach": "Built real-time and backfill Power Automate flows that parse incoming alerts and structured attachment filenames, then log them into a SharePoint Excel tracker. Replaced a discontinued AI feature with a direct Claude API call for summarisation, and packaged the document-checking logic as a reusable skill distributed to the team.",
+      "result": "A hands-off pipeline plus a set of reusable AI building blocks the team can apply to other inboxes — automation that compounds instead of staying a one-off.",
+      "role": "Designed the flows, the parsing logic, the API integration, and the reusable skill packaging.",
+      "metrics": [
+        {"val": "2", "cap": "Flows (live + backfill)"},
+        {"val": "Team", "cap": "Reusable skill shared"}
+      ],
+      "stack": ["Power Automate", "Claude API", "SharePoint", "Excel"]
+    },
+    {
+      "flag": "",
+      "title": "Executive P&L dashboard, built from messy multi-sheet data",
+      "tag": "Power BI · Data Modelling · Reporting",
+      "problem": "Annual P&L lived across scattered, inconsistent Excel sheets — no clean structure, no way for leadership to see revenue and margin at a glance.",
+      "approach": "Cleaned and unpivoted the source into a flat ~3,600-row model, fixed the modelling problems behind it (sort order, axis logic, slicers), and wrote DAX measures driving an executive dashboard of KPI cards and trend charts.",
+      "result": "A single dashboard covering 300M+ in revenue with margin and profit trends leadership could read instantly — built start to finish while learning the tool, which is the point: I close capability gaps fast.",
+      "role": "Everything — data cleaning, model design, DAX, and dashboard layout.",
+      "metrics": [
+        {"val": "300M<small>+</small>", "cap": "Revenue covered"},
+        {"val": "3,600<small> rows</small>", "cap": "Modelled clean"},
+        {"val": "1", "cap": "Exec dashboard"}
+      ],
+      "stack": ["Power BI", "DAX", "Power Query", "Data Modelling"]
+    },
+    {
+      "flag": "Personal",
+      "title": "Multi-layer AI agent architecture for an automated micro-business",
+      "tag": "AI Agent Design · Workflow Orchestration · Self-hosted",
+      "problem": "A solo online operation involved repetitive, multi-step web tasks — logging in, handling verification, placing structured orders, reading freeform replies, and notifying the owner — that ate hours and didn't scale past one person.",
+      "approach": "Designed a layered AI-agent architecture that decomposes the operation into stages: browser automation for the repetitive web steps, an LLM layer to read and classify freeform replies, success/exception branching with retry loops, and remote control + notifications via a chat bot. Orchestrated on a self-hosted automation engine, with the LLM handling the judgement steps a rigid script couldn't.",
+      "result": "A working blueprint for end-to-end agentic automation of a real workflow — the decompose → automate → human-in-the-loop-on-exceptions pattern that transfers directly to business process automation.",
+      "role": "Solo — architecture, agent design, browser automation, and LLM integration. Independent R&D in agentic workflow design.",
+      "metrics": [
+        {"val": "Multi<small>-layer</small>", "cap": "Agent architecture"},
+        {"val": "LLM", "cap": "Judgement in the loop"}
+      ],
+      "stack": ["AI Agents", "Workflow Orchestration", "Browser Automation", "Claude API", "Python"]
+    }
+  ],
+
+  "builder_notes": {
+    "title": "Always building",
+    "intro": "Between projects I build and ship small tools — it's how I stay sharp and test ideas before they reach production work.",
+    "items": [
+      "Reusable AI <strong>skills/components</strong> packaged so a team can apply them without rebuilding the logic each time",
+      "Replacing discontinued no-code AI features with direct <strong>LLM API calls</strong> in live business flows",
+      "<strong>Python automation</strong> — scripting the glue that off-the-shelf tools can't, from data cleanup to API orchestration",
+      "Experimenting with <strong>text-to-speech</strong> and document-processing pipelines for content and ops use cases"
+    ]
+  },
+
+  "footer": {
+    "closing": "Let's make the work measurable.",
+    "disclaimer": "All case studies are anonymised. Client names, employee data and exact figures have been removed or generalised to respect confidentiality; metrics shown are rounded to convey scale, not actual internal data."
+  }
+}
+</script>
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  ▲▲▲  END OF EDITABLE CONTENT  ▲▲▲                                ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+
+<header><div class="wrap" id="hero"></div></header>
+
+<section class="section"><div class="wrap">
+  <div class="about-grid reveal">
+    <div>
+      <div class="sec-label">// Approach</div>
+      <h2 class="sec-title" id="about-title"></h2>
+      <div id="about-paras"></div>
+    </div>
+    <div class="stack-box">
+      <h4>Core Toolkit</h4>
+      <ul id="toolkit"></ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-label reveal">// Selected Work</div>
+  <h2 class="sec-title reveal">Case studies</h2>
+  <div id="cases"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-label reveal">// Off the clock</div>
+  <h2 class="sec-title reveal" id="builder-title"></h2>
+  <p class="reveal" id="builder-intro" style="color:var(--ink-soft);max-width:660px;margin-bottom:28px"></p>
+  <ul class="reveal" id="builder-items" style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 40px"></ul>
+</div></section>
+
+<footer><div class="wrap">
+  <p class="big reveal" id="closing"></p>
+  <div class="foot-links reveal" id="foot-links"></div>
+  <p class="disclaimer" id="disclaimer"></p>
+</div></footer>
+
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+
+// ---- Hero ----
+const p = D.profile;
+document.getElementById('hero').innerHTML = `
+  <div class="eyebrow">${p.eyebrow}</div>
+  <h1>${p.headline_line1}<br>${p.headline_line2}<br><em>${p.headline_em}</em></h1>
+  <p class="lede">${p.lede}</p>
+  <div class="contact-row">
+    <a href="mailto:${p.email}">${p.email}</a>
+    <a href="${p.linkedin_url}" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="${p.github_url}" target="_blank" rel="noopener">GitHub</a>
+    <span style="color:var(--ink-faint)">${p.location}</span>
+  </div>`;
+
+// ---- About ----
+document.getElementById('about-title').textContent = D.about.title;
+document.getElementById('about-paras').innerHTML = D.about.paragraphs.map(t=>`<p>${t}</p>`).join('');
+document.getElementById('toolkit').innerHTML = D.about.toolkit.map(t=>`<li>${t}</li>`).join('');
+
+// ---- Cases ----
+let n=0;
+document.getElementById('cases').innerHTML = D.cases.filter(c=>!c.hidden).map(c=>{
+  n++;
+  const num = String(n).padStart(2,'0');
+  const flag = c.flag ? `<span class="case-flag">${c.flag}</span>` : '';
+  const metrics = (c.metrics&&c.metrics.length)
+    ? `<div class="metrics">${c.metrics.map(m=>`<div class="metric"><div class="val">${m.val}</div><div class="cap">${m.cap}</div></div>`).join('')}</div>` : '';
+  const stack = `<div class="stack-tags">${c.stack.map(s=>`<span>${s}</span>`).join('')}</div>`;
+  return `<article class="case reveal">
+    <span class="case-num">${num}</span>${flag}
+    <h3>${c.title}</h3>
+    <div class="case-tag">${c.tag}</div>
+    <div class="case-body">
+      <div class="block"><h5>Problem</h5><p>${c.problem}</p></div>
+      <div class="block"><h5>Approach</h5><p>${c.approach}</p></div>
+      <div class="block"><h5>Result</h5><p>${c.result}</p></div>
+      <div class="block"><h5>My role</h5><p>${c.role}</p></div>
+    </div>
+    ${metrics}
+    ${stack}
+  </article>`;
+}).join('');
+
+// ---- Builder notes ----
+document.getElementById('builder-title').textContent = D.builder_notes.title;
+document.getElementById('builder-intro').innerHTML = D.builder_notes.intro;
+document.getElementById('builder-items').innerHTML = D.builder_notes.items.map(t=>
+  `<li style="font-size:16px;color:var(--ink-soft);padding-left:18px;position:relative;line-height:1.5">
+     <span style="position:absolute;left:0;color:var(--accent)">›</span>${t}</li>`).join('');
+
+// ---- Footer ----
+document.getElementById('closing').textContent = D.footer.closing;
+document.getElementById('foot-links').innerHTML =
+  `<a href="mailto:${p.email}">Email</a>
+   <a href="${p.linkedin_url}" target="_blank" rel="noopener">LinkedIn</a>
+   <a href="${p.github_url}" target="_blank" rel="noopener">GitHub</a>`;
+document.getElementById('disclaimer').textContent = D.footer.disclaimer;
+
+// ---- Reveal on scroll ----
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
