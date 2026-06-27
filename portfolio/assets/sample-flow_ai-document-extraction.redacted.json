@@ -1,0 +1,316 @@
+{
+  "_README": "REDACTED SAMPLE — structure only. Office Script source, client identifiers, mailbox addresses, SharePoint paths and field-level mappings are intentionally removed. Shared publicly to demonstrate orchestration design only.",
+  "pattern": "AI Document-Extraction Pipeline (Power Automate)",
+  "trigger": "When a new email arrives (V3) · filtered by sender + subject + has-attachment",
+  "high_level_flow": [
+    "Email intake (attachment + body)",
+    "Branch on attachment type (structured Excel vs PDF)",
+    "Azure Document Intelligence — Analyze (prebuilt-invoice / layout)",
+    "Office Script — parse + per-line arithmetic checksum (OCR error detection)",
+    "Office Script — map source units to customs UOM schema",
+    "Write to standardised output template (by column position)",
+    "SharePoint — store output + original (folder per shipment)",
+    "Microsoft Teams — notify operations recipients",
+    "Revision branch — diff vs previous version when re-sent"
+  ],
+  "connectors_used": [
+    "Azure Document Intelligence · Analyze",
+    "Content Conversion · HTML to text",
+    "Excel Online · Add row",
+    "Excel Online · List rows",
+    "Microsoft Teams · Post message",
+    "Office Script · Run script",
+    "SharePoint · Create file",
+    "SharePoint · Create folder",
+    "SharePoint · Delete file",
+    "SharePoint · Get file"
+  ],
+  "redacted_skeletons": {
+    "████ Template Creator": {
+      "trigger": "When a new email arrives (V3)",
+      "actions": [
+        {
+          "step": "Condition",
+          "kind": "If",
+          "children": [
+            {
+              "step": "Html to text",
+              "kind": "OpenApiConnection",
+              "connector": "Content Conversion · HTML to text"
+            },
+            {
+              "step": "████ Master Reader",
+              "kind": "OpenApiConnection",
+              "connector": "Office Script · Run script"
+            },
+            {
+              "step": "UOM Reader",
+              "kind": "OpenApiConnection",
+              "connector": "Office Script · Run script"
+            },
+            {
+              "step": "Get template",
+              "kind": "OpenApiConnection",
+              "connector": "SharePoint · Get file"
+            },
+            {
+              "step": "Apply to each",
+              "kind": "Foreach",
+              "children": [
+                {
+                  "step": "Condition 1",
+                  "kind": "If",
+                  "children": [
+                    {
+                      "step": "invNo",
+                      "kind": "Compose"
+                    },
+                    {
+                      "step": "Analyze Document",
+                      "kind": "OpenApiConnection",
+                      "connector": "Azure Document Intelligence · Analyze"
+                    },
+                    {
+                      "step": "Append to array variable - docNames",
+                      "kind": "AppendToArrayVariable"
+                    },
+                    {
+                      "step": "Append to array variable - docLayouts",
+                      "kind": "AppendToArrayVariable"
+                    },
+                    {
+                      "step": "Create PDF",
+                      "kind": "OpenApiConnection",
+                      "connector": "SharePoint · Create file"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "Create output file",
+              "kind": "OpenApiConnection",
+              "connector": "SharePoint · Create file"
+            },
+            {
+              "step": "Run ████ script",
+              "kind": "OpenApiConnection",
+              "connector": "Office Script · Run script"
+            },
+            {
+              "step": "Condition 2",
+              "kind": "If",
+              "children": [
+                {
+                  "step": "Delete file",
+                  "kind": "OpenApiConnection",
+                  "connector": "SharePoint · Delete file"
+                }
+              ]
+            },
+            {
+              "step": "firstInv",
+              "kind": "Compose"
+            },
+            {
+              "step": "Create new folder",
+              "kind": "OpenApiConnection",
+              "connector": "SharePoint · Create folder"
+            },
+            {
+              "step": "recipients",
+              "kind": "Compose"
+            },
+            {
+              "step": "Apply to each 1",
+              "kind": "Foreach",
+              "children": [
+                {
+                  "step": "Post message in a chat or channel",
+                  "kind": "OpenApiConnection",
+                  "connector": "Microsoft Teams · Post message"
+                }
+              ]
+            },
+            {
+              "step": "Terminate",
+              "kind": "Terminate"
+            }
+          ]
+        },
+        {
+          "step": "docNames",
+          "kind": "InitializeVariable"
+        },
+        {
+          "step": "docLayouts",
+          "kind": "InitializeVariable"
+        }
+      ]
+    },
+    "████ BL Alert": {
+      "trigger": "When a new email arrives (V3)",
+      "actions": [
+        {
+          "step": "Extract ████",
+          "kind": "InitializeVariable"
+        },
+        {
+          "step": "Extract Date and Time",
+          "kind": "InitializeVariable"
+        },
+        {
+          "step": "Add a row into a table",
+          "kind": "OpenApiConnection",
+          "connector": "Excel Online · Add row"
+        }
+      ]
+    },
+    "████ Document Intelligence": {
+      "trigger": "When a new email arrives (V3)",
+      "actions": [
+        {
+          "step": "ForEach Attachment",
+          "kind": "Foreach",
+          "children": [
+            {
+              "step": "If PDF Attachment",
+              "kind": "If",
+              "children": [
+                {
+                  "step": "Analyze Document (Invoice)",
+                  "kind": "OpenApiConnection",
+                  "connector": "Azure Document Intelligence · Analyze"
+                },
+                {
+                  "step": "Run script ████Template",
+                  "kind": "OpenApiConnection",
+                  "connector": "Office Script · Run script"
+                },
+                {
+                  "step": "Run script MasterReader",
+                  "kind": "OpenApiConnection",
+                  "connector": "Office Script · Run script"
+                },
+                {
+                  "step": "Run script from SharePoint library",
+                  "kind": "OpenApiConnection",
+                  "connector": "Office Script · Run script"
+                },
+                {
+                  "step": "Extract OK or not",
+                  "kind": "If",
+                  "children": [
+                    {
+                      "step": "Extraction incomplete message",
+                      "kind": "OpenApiConnection",
+                      "connector": "Microsoft Teams · Post message"
+                    },
+                    {
+                      "step": "Condition",
+                      "kind": "If",
+                      "children": [
+                        {
+                          "step": "Get file content 1",
+                          "kind": "OpenApiConnection",
+                          "connector": "SharePoint · Get file"
+                        },
+                        {
+                          "step": "Create file 1",
+                          "kind": "OpenApiConnection",
+                          "connector": "SharePoint · Create file"
+                        },
+                        {
+                          "step": "Extraction complete message (Revision)",
+                          "kind": "OpenApiConnection",
+                          "connector": "Microsoft Teams · Post message"
+                        },
+                        {
+                          "step": "Try Diff",
+                          "kind": "Scope",
+                          "children": [
+                            {
+                              "step": "Read Original",
+                              "kind": "OpenApiConnection",
+                              "connector": "Office Script · Run script"
+                            },
+                            {
+                              "step": "Diff",
+                              "kind": "OpenApiConnection",
+                              "connector": "Office Script · Run script"
+                            }
+                          ]
+                        },
+                        {
+                          "step": "Get file content",
+                          "kind": "OpenApiConnection",
+                          "connector": "SharePoint · Get file"
+                        },
+                        {
+                          "step": "Create file",
+                          "kind": "OpenApiConnection",
+                          "connector": "SharePoint · Create file"
+                        },
+                        {
+                          "step": "Extraction complete message",
+                          "kind": "OpenApiConnection",
+                          "connector": "Microsoft Teams · Post message"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "step": "Run script UOMReader",
+                  "kind": "OpenApiConnection",
+                  "connector": "Office Script · Run script"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Compose",
+          "kind": "Compose"
+        },
+        {
+          "step": "List rows present in a table",
+          "kind": "OpenApiConnection",
+          "connector": "Excel Online · List rows"
+        },
+        {
+          "step": "Filter array",
+          "kind": "Query"
+        }
+      ]
+    },
+    "████ Revision Request Alert": {
+      "trigger": "When a new email arrives (V3)",
+      "actions": [
+        {
+          "step": "Extract Date and Time",
+          "kind": "Compose"
+        },
+        {
+          "step": "Add a row into a table",
+          "kind": "OpenApiConnection",
+          "connector": "Excel Online · Add row"
+        }
+      ]
+    },
+    "████ Revision Response Alert": {
+      "trigger": "When a new email arrives (V3)",
+      "actions": [
+        {
+          "step": "Extract Date and Time",
+          "kind": "Compose"
+        },
+        {
+          "step": "Add a row into a table",
+          "kind": "OpenApiConnection",
+          "connector": "Excel Online · Add row"
+        }
+      ]
+    }
+  }
+}
